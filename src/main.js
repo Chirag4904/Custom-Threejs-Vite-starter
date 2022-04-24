@@ -1,7 +1,7 @@
 import "./style.css";
 
 import * as THREE from "three";
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -68,8 +68,8 @@ camera.position.z = 10;
 scene.add(camera);
 
 // Controls
-// const controls = new OrbitControls(camera, canvas)
-// controls.enableDamping = true
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
 
 /**
  * Renderer
@@ -92,6 +92,8 @@ const tick = () => {
 	// Update objects
 	sphere.rotation.y = 0.5 * elapsedTime;
 
+	//Update controls
+	controls.update();
 	// Render
 	renderer.render(scene, camera);
 
